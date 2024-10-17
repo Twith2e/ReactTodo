@@ -63,9 +63,9 @@ export default function TodoList() {
   }
 
   return (
-    <div className="text-center">
-      <h1>ToDO</h1>
-      <div>
+    <div className="text-center todo-body p-4">
+      <h1 className="text-white">TODO</h1>
+      <div className="d-flex gap-1 align-items-center">
         <input
           type="text"
           value={input1}
@@ -78,50 +78,60 @@ export default function TodoList() {
           placeholder="Input a task content..."
           onChange={updateInput2}
         />
-        <button className="add-button" onClick={addTodo}>
+        <button className="add-button btn btn-success" onClick={addTodo}>
           Add
         </button>
       </div>
-      <ol className="d-flex flex-column gap-3 align-items-center p-0 my-4 ">
+      <ol className="d-flex flex-column gap-3 align-items-center p-0 my-4">
         {todos.map((todo, index) => (
           <li
-            className="task d-flex gap-3 align-items-center justify-content-between bg-dark text-light px-3 w-25"
+            className="task d-flex gap-3 align-items-center justify-content-between text-light px-3"
             key={index}
           >
             {editId === index ? (
               <>
-                <input
-                  type="text"
-                  value={editInput1}
-                  placeholder="Input a task title..."
-                  onChange={updateEditInput1}
-                />
-                <input
-                  type="text"
-                  value={editInput2}
-                  placeholder="Input a task content..."
-                  onChange={updateEditInput2}
-                />
-                <button className="add-button" onClick={updateTodo}>
-                  Save
-                </button>
+                <div className="d-flex">
+                  <input
+                    type="text"
+                    value={editInput1}
+                    placeholder="Input a task title..."
+                    onChange={updateEditInput1}
+                  />
+                  <input
+                    type="text"
+                    value={editInput2}
+                    placeholder="Input a task content..."
+                    onChange={updateEditInput2}
+                  />
+                  <button
+                    className="add-button btn btn-success"
+                    onClick={updateTodo}
+                  >
+                    ✔️
+                  </button>
+                </div>
               </>
             ) : (
               <>
-                <span>{todo.title}</span>
-                <span>{todo.content}</span>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => deleteTodo(index)}
-                >
-                  🗑️
-                </button>
-                <button
-                  className="btn btn-success"
-                  onClick={() => editTodo(index)}
-                >
-                  ✏️
-                </button>
+                <div className="d-flex gap-3">
+                  <span>{todo.title}</span>
+                  <span>{todo.content}</span>
+                </div>
+
+                <div className="d-flex gap-3">
+                  <button
+                    className="btn btn-danger action-button"
+                    onClick={() => deleteTodo(index)}
+                  >
+                    🗑️
+                  </button>
+                  <button
+                    className="btn btn-success action-button"
+                    onClick={() => editTodo(index)}
+                  >
+                    ✏️
+                  </button>
+                </div>
               </>
             )}
           </li>

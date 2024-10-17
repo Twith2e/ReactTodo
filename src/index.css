@@ -4,5 +4,28 @@
 
 li {
   padding: 0;
-  width: fit-content;
+  width: 90%;
+}
+
+.todo-body {
+  background-color: #1e1647;
+  margin: auto;
+  height: 600px;
+  width: 550px;
+}
+
+input[type="text"] {
+  border: none;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  outline: none;
+  padding: 5px;
+}
+
+ol {
+  background: #872eff;
+}
+
+.action-button {
+  font-size: 0.75rem;
 }
